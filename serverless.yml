@@ -1,0 +1,20 @@
+service: test-lambda # NOTE: update this with your service name
+
+provider:
+  name: aws
+  runtime: python3.7
+  stage: dev
+  region: ap-northeast-1
+  apiGateway:
+    restApiId: 77ki7049b1
+    restApiRootResourceId: 2bwvim5ag5
+    restApiResources:
+      get-sls-message: grnbd9
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - http:
+          path: /get-sls-message
+          method: get
